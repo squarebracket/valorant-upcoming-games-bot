@@ -51,8 +51,8 @@
   },
   {
     "league": "Game Changers BR",
-    "startTime": "2024-03-14T17:00:00-0300",
-    "endTime": "2024-03-14T19:30:00-0300",
+    "startTime": "2024-03-14T18:00:00-0300",
+    "endTime": "2024-03-14T17:55:00-0300",
     "strategy": {
       "type": "bestOf",
       "count": 3

@@ -1,5 +1,5 @@
-import { League, getLeagueByName } from "../lib/leagues.ts";
-import { getMatchesFromScraped } from "./vlr_scraper.ts";
+import { League, getLeagueByName } from "../../lib/leagues.ts";
+import { getMatchesFromScraped } from "../vlr_scraper.ts";
 
 const EMEAGCTricodeMapper = {
   'BBL Queens': 'BBL.Q',

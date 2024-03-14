@@ -1,5 +1,5 @@
 import { parse } from 'node-html-parser';
-import { doRequest } from '../lib/utils.ts';
+import { doRequest } from '../../lib/utils.ts';
 
 export async function getMatches() {
   const html = await doRequest(new URL('https://vctgcemea.com/tournament/detail/vct-game-changers-emea:-stage-1-group-stage'), false);
