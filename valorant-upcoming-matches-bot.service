@@ -1,0 +1,11 @@
+[Unit]
+Description=Valorant upcoming matches bot
+After=local-fs.target
+
+[Service]
+WorkingDirectory=/home/chuck/le-codes/valorant-upcoming-matches-bot
+ExecStart=/home/chuck/.nvm/versions/node/v20.5.0/bin/node --loader=tsimp/loader src/index.ts
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

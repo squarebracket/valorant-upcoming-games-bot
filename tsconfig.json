@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+		"target": "es2017",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@": ["./src"],
+      "@/*": ["./src/*"],
+      "@/lib": ["./src/lib"],
+      // "@/lib/*": ["./src/lib/*"]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+  }
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "league": "Game Changers EMEA",
+    "teamA": {
+      "name": "On Sight",
+      "code": "ON"
+    },
+    "teamB": {
+      "name": "Lotus Karma",
+      "code": "LK"
+    },
+    "startTime": "2024-03-13T14:00:00-0400",
+    "endTime": "2024-03-13T16:30:00-0400",
+    "strategy": {
+      "type": "bestOf",
+      "count": 3
+    },
+    "stream": "https://twitch.tv/mavi_vlr"
+  },
+  {
+    "league": "Game Changers EMEA",
+    "teamA": {
+      "name": "On Sight",
+      "code": "ON"
+    },
+    "teamB": {
+      "name": "WRAITH"
+    },
+    "startTime": "2024-03-14T14:00:00-0400",
+    "endTime": "2024-03-14T16:30:00-0400",
+    "strategy": {
+      "type": "bestOf",
+      "count": 3
+    },
+    "stream": "https://twitch.tv/mavi_vlr"
+  },
+  {
+    "league": "Game Changers EMEA",
+    "teamA": {
+      "name": "INVICTA"
+    },
+    "teamB": {
+      "name": "Ascendium"
+    },
+    "startTime": "2024-03-14T14:00:00-0400",
+    "endTime": "2024-03-14T16:30:00-0400",
+    "strategy": {
+      "type": "bestOf",
+      "count": 3
+    }
+  },
+  {
+    "league": "Game Changers BR",
+    "startTime": "2024-03-14T17:00:00-0300",
+    "endTime": "2024-03-14T19:30:00-0300",
+    "strategy": {
+      "type": "bestOf",
+      "count": 3
+    }
+  }
+]
