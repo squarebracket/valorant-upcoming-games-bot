@@ -4,7 +4,15 @@ import { getGamersClub } from "../gamersclub.ts";
 import { Team } from "../../lib/matches.ts";
 
 const streamMapper = {
-  'TL': 'https://twitch.tv/oldmanspacca',
+  'Liquid': 'https://twitch.tv/tixinhadois',
+  'MIBR': 'https://www.twitch.tv/naperx_',
+  'furico': 'https://www.twitch.tv/leticiaxmotta',
+  'CMJ': 'https://www.twitch.tv/bahgutierrez',
+  'DDB': 'https://www.twitch.tv/wildchun',
+  'RKT': 'https://www.twitch.tv/akakarota',
+  'DMX': 'https://www.twitch.tv/naoshiitv',
+  'LOUD': 'https://www.twitch.tv/naoshiitv',
+  'TLV': 'https://www.twitch.tv/anaz1k',
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
