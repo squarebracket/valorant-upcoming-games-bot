@@ -16,7 +16,7 @@ type GamersClubMatch = {
   finished: boolean;
   teamAScore: number;
   teamBScore: number;
-  status?: 'COMING_SOON' | 'ONGOING' | 'FINISHED';
+  status?: 'COMING_SOON' | 'ONGOING' | 'FINISHED' | 'MAP_VETO';
   startDate: string;
   winnerId: number | null;
   matchFormat?: string;
