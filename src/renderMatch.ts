@@ -154,7 +154,9 @@ export async function renderMatches(matches: Match[], filterFn: LeagueFilterFunc
     timeWindowFiltered = ret.matches;
     hours = ret.hours;
   }
-  const live: Match[] = timeWindowFiltered.filter(match => match.state === 'live');
+  const live: Match[] = timeWindowFiltered.filter(match => match.state === 'live')
+    // sort matches with streams to the top in case we have more than MAX_MATCHES_PER_LEAGUE
+    .sort((a, b) => a.stream ? -1 : (b.stream ? 1 : 0));
   const upcoming: Match[] = timeWindowFiltered.filter(match => match.state === 'upcoming');
   const filteredOut = matches.filter(match => !filterFn(match.league));
 
