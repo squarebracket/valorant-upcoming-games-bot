@@ -27,7 +27,7 @@ async function scraper(tourneyId: number) {
       if (status === 'Completed') {
         return;
       }
-      const date = matchEl.parentNode.previousElementSibling.innerText.trim();
+      const date = matchEl.parentNode.previousElementSibling.firstChild.innerText.trim();
       const time = matchEl.querySelector('.match-item-time').innerText.trim();
       const startTime = new Date(`${date} ${time}`);
 
