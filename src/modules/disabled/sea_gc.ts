@@ -4,8 +4,8 @@ import { TricodeMapper, streamMapperLookupFunction } from "../../lib/utils.ts";
 import { StartTimeMapper, getChallonge } from "../challonge.ts";
 
 const streamMapper = {
-  'Deviant Topaz': 'https://www.twitch.tv/kiarafordel',
-  'LILITH': 'https://www.twitch.tv/rakerzzzgg',
+  // 'Deviant Topaz': 'https://www.twitch.tv/kiarafordel',
+  // 'LILITH': 'https://www.twitch.tv/rakerzzzgg',
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
@@ -68,5 +68,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return await getChallonge(14266169, league, tricodeMapper, startTimeMapper, streamMapperFn);
+  return await getChallonge(14266188, league, tricodeMapper, startTimeMapper, streamMapperFn);
 }
