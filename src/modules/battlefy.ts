@@ -56,32 +56,66 @@ type BattlefyStage = {
 
 type BattlefyStartTimeMapper = { [key: string]: string[] };
 
+const builtinTimeMappers: BattlefyStartTimeMapper = {
+  'gc-quals': [
+    '2024-03-22T21:00:00.000Z',
+    '2024-03-23T00:00:00.000Z',
+    '2024-03-23T21:00:00.000Z',
+    '2024-03-24T00:00:00.000Z',
+    '2024-03-25T21:00:00.000Z',
+    '2024-03-26T00:00:00.000Z',
+    '2024-03-26T21:00:00.000Z',
+    '2024-03-27T00:00:00.000Z',
+  ]
+};
+
+type BuiltinTimeMappers = 'gc-quals';
+
+// TODO: better types?
+const startTimeMapper = (stage: BattlefyStage, match: BattlefyMatch, startTimeMapper: string[], roundOffset: number) => {
+  const startDate = new Date(stage.startTime);
+  const a = new Date(startTimeMapper[0]);
+  // @ts-ignore
+  const diff = startDate - a;
+  let roundNum = match.roundNumber + roundOffset;
+  if (stage.bracket.style === 'double' && match.matchType === 'loser') {
+    roundNum++;
+  }
+  const b = new Date(startTimeMapper[roundNum - 1]);
+  b.setMilliseconds(b.getMilliseconds() + diff);
+  return b;
+}
+
 export async function getBattlefy(
   tournamentId: string,
   league: League,
   tricodeMapper: TricodeMapper,
   streamMapperFn?: StreamMapperFunction,
-  battlefyStartTimeMapper?: BattlefyStartTimeMapper
+  battlefyStartTimeMapper?: BuiltinTimeMappers | string[]
 ): Promise<Match[]> {
   const matches: Match[] = [];
   const now = new Date();
 
   const url = new URL(`https://dtmwra1jsgyb0.cloudfront.net/tournaments/${tournamentId}?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true`);
+  let maxRoundNumThisStage = 0;
+  let roundOffset = 0;
   const data = (await doRequest(url))[0].stages.forEach((stage: BattlefyStage) => {
     if (!stage.matches) {
       return;
     }
     // stage.matches.filter((match) => !match.isComplete && !match.isBye).forEach((match) => {
+    roundOffset = roundOffset + maxRoundNumThisStage;
     stage.matches.filter((match) => !match.isBye).forEach((match) => {
+      maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
       if (/group/i.test(stage.name)) {
         return;
       }
       let startTime = new Date(stage.startTime);
-      if (battlefyStartTimeMapper && battlefyStartTimeMapper[stage._id]) {
-        const mapper = battlefyStartTimeMapper[stage._id];
-        if (mapper[match.roundNumber - 1]) {
-          startTime = new Date(mapper[match.roundNumber - 1]);
+      if (battlefyStartTimeMapper) {
+        if (typeof battlefyStartTimeMapper === 'string') {
+          battlefyStartTimeMapper = builtinTimeMappers[battlefyStartTimeMapper];
         }
+        startTime = startTimeMapper(stage, match, battlefyStartTimeMapper, roundOffset);
       }
       const newMatch: Match = {
         league: league,
