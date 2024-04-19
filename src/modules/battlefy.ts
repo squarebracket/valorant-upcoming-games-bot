@@ -35,13 +35,44 @@ type BattlefyBracketSeries = {
   numGames: number;
 }
 
+type BattlefyStanding = {
+  disqualified: boolean;
+  gameLosses: number;
+  gameWinPercentage: number | null;
+  gameWins: number;
+  losses: number;
+  matchWinPercentage: number | null;
+  opponentsMatchWinPercentage: number | null;
+  opponentsOpponentsMatchWinPercentage: number | null;
+  points: number;
+  rrt1: number | null;
+  rrt2: number | null;
+  rrt3: number | null;
+  rrt4: number | null;
+  rrt5: number | null;
+  rrt6: number | null;
+  rrt7: number | null;
+  t1: number | null;
+  t2: number | null;
+  t3: number | null;
+  team: BattlefyTeam;
+  ties: number | null;
+  wins: number | null;
+}
+
+type BattlefyGroup = {
+  matches: BattlefyMatch[];
+  name: string;
+  standings: BattlefyStanding[];
+}
+
 type BattlefyStage = {
   _id: string;
   name: string;
   // date string
   startTime: string;
   bracket: {
-    type: string;
+    type: 'elimination' | 'roundrobin';
     seriesStyle: 'bestOf';
     style: 'single' | 'double';
     teamsCount: number;
@@ -51,7 +82,8 @@ type BattlefyStage = {
   };
   hasStarted: boolean;
   teamIDs: string[];
-  matches: BattlefyMatch[];
+  matches?: BattlefyMatch[];
+  groups?: BattlefyGroup[];
 }
 
 type BattlefyStartTimeMapper = { [key: string]: string[] };
@@ -99,13 +131,22 @@ export async function getBattlefy(
   const url = new URL(`https://dtmwra1jsgyb0.cloudfront.net/tournaments/${tournamentId}?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true`);
   let maxRoundNumThisStage = 0;
   let roundOffset = 0;
-  const data = (await doRequest(url))[0].stages.forEach((stage: BattlefyStage) => {
+  const data = (await doRequest(url))[0];
+  data.stages.forEach((stage: BattlefyStage) => {
     if (!stage.matches) {
       return;
     }
     // stage.matches.filter((match) => !match.isComplete && !match.isBye).forEach((match) => {
+    let matchesTemp: BattlefyMatch[] = [];
+    if (stage.bracket.type === 'roundrobin') {
+      stage.groups.forEach(group => {
+        matchesTemp = matchesTemp.concat(group.matches);
+      })
+    } else {
+      matchesTemp = stage.matches;
+    }
     roundOffset = roundOffset + maxRoundNumThisStage;
-    stage.matches.filter((match) => !match.isBye).forEach((match) => {
+    matchesTemp.forEach((match) => {
       maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
       if (match.isBye || match.isComplete) {
         return;
