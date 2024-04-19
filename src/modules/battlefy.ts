@@ -107,7 +107,7 @@ export async function getBattlefy(
     roundOffset = roundOffset + maxRoundNumThisStage;
     stage.matches.filter((match) => !match.isBye).forEach((match) => {
       maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
-      if (/group/i.test(stage.name)) {
+      if (match.isBye || match.isComplete) {
         return;
       }
       let startTime = new Date(stage.startTime);
