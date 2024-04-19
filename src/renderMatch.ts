@@ -2,7 +2,7 @@ import { League, LeagueFilterFunction, getLeagues } from "./lib/leagues.ts";
 import { Match } from "./lib/matches.ts";
 import { getMatchesByLeague } from "./lib/utils.ts";
 
-const MAX_MATCHES_PER_LEAGUE = 7;
+const MAX_MATCHES_PER_LEAGUE = 8;
 const UPCOMING_TIMEFRAME_TARGET = 15;
 
 type RenderFunction = (league: League, match: Match[], unseen: number, tierBreak: boolean) => string;
