@@ -3,15 +3,13 @@ import { Match, Team } from "../../lib/matches.ts";
 import { streamMapperLookupFunction } from "../../lib/utils.ts";
 import { getBattlefy } from "../battlefy.ts";
 
-const battlefyStartTimeMapper = {
-  "65c42cfca19d2063eaee85d8": [
-    '2024-03-07T23:30:00.000Z',
-    '2024-03-09T22:00:00.000Z',
-    '2024-03-09T23:30:00.000Z',
-    '2024-03-10T22:00:00.000Z',
-    '2024-03-11T00:00:00.000Z',
-  ],
-};
+const battlefyStartTimeMapper = [
+  '2024-03-07T23:30:00.000Z',
+  '2024-03-09T22:00:00.000Z',
+  '2024-03-09T23:30:00.000Z',
+  '2024-03-10T22:00:00.000Z',
+  '2024-03-11T00:00:00.000Z',
+];
 
 const battlefyStreamMapper = {
   'Psycho Cats': 'https://twitch.tv/tomatoluna',
@@ -77,7 +75,7 @@ const NAGCTricodeMapper = {
   'U4RIA Azalea': 'U4R',
   'TBD': 'TBD',
 };
-const naQuals = new URL('https://dtmwra1jsgyb0.cloudfront.net/tournaments/65bac6adbb579346b1d3147b?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true');
+// const naQuals = new URL('https://dtmwra1jsgyb0.cloudfront.net/tournaments/65bac6adbb579346b1d3147b?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true');
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
   return streamMapperLookupFunction(battlefyStreamMapper, teamA, teamB);
@@ -89,5 +87,5 @@ export async function getMatches(): Promise<Match[]> {
     console.error('unable to find league');
     throw new Error(`unable to find league`);
   }
-  return (await getBattlefy(naQuals, league, NAGCTricodeMapper, streamMapperFn, battlefyStartTimeMapper));
+  return (await getBattlefy('65bac6adbb579346b1d3147b', league, NAGCTricodeMapper, streamMapperFn));
 }

@@ -57,7 +57,7 @@ type BattlefyStage = {
 type BattlefyStartTimeMapper = { [key: string]: string[] };
 
 export async function getBattlefy(
-  url: URL,
+  tournamentId: string,
   league: League,
   tricodeMapper: TricodeMapper,
   streamMapperFn?: StreamMapperFunction,
@@ -66,6 +66,7 @@ export async function getBattlefy(
   const matches: Match[] = [];
   const now = new Date();
 
+  const url = new URL(`https://dtmwra1jsgyb0.cloudfront.net/tournaments/${tournamentId}?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true`);
   const data = (await doRequest(url))[0].stages.forEach((stage: BattlefyStage) => {
     if (!stage.matches) {
       return;
