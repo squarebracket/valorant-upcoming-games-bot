@@ -12,11 +12,11 @@ export function renderLiveMatch(match: Match): string {
   if (!match.teamA && !match.teamB) {
     return `No team info was returned ¯\\_(ツ)_/¯ but it's live @ ${stream}`;
   }
-  let leftSide = match.teamA ? match.teamA.code : 'TBD';
+  let leftSide = (match.teamA ? match.teamA.code : 'TBD').replace('_', '\\_');
   if (match.teamA?.record) {
     leftSide += ` (${match.teamA.record.wins}-${match.teamA.record.losses})`;
   }
-  let rightSide = match.teamB ? match.teamB.code : 'TBD';
+  let rightSide = (match.teamB ? match.teamB.code : 'TBD').replace('_', '\\_');
   if (match.teamB?.record) {
     rightSide += ` (${match.teamB.record.wins}-${match.teamB.record.losses})`;
   }
@@ -32,11 +32,11 @@ export function renderLiveMatch(match: Match): string {
 }
 
 export function renderUpcomingMatch(match: Match): string {
-  let leftSide = match.teamA ? match.teamA.code : 'TBD';
+  let leftSide = (match.teamA ? match.teamA.code : 'TBD').replace('_', '\\_');
   if (match.teamA?.record) {
     leftSide += ` (${match.teamA.record.wins}-${match.teamA.record.losses})`;
   }
-  let rightSide = match.teamB ? match.teamB.code : 'TBD';
+  let rightSide = (match.teamB ? match.teamB.code : 'TBD').replace('_', '\\_');
   if (match.teamB?.record) {
     rightSide += ` (${match.teamB.record.wins}-${match.teamB.record.losses})`;
   }
