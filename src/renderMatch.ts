@@ -113,7 +113,7 @@ const renderUpcomingMatches = (league: League, matches: Match[], unseen: number,
 
 function findGoodTimeFrame(matches: Match[]) {
   const now = new Date();
-  const stops = [168, 72, 48, 36, 24];
+  const stops = [168, 72, 48, 36];
   const lastStop = stops[stops.length - 1];
   for (let i = 0; i < stops.length; i++) {
     const hours = stops[i];
