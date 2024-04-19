@@ -184,11 +184,13 @@ export async function getBattlefy(
         };
       }
 
-      if (newMatch.state === 'live' && streamMapperFn !== undefined) {
+      if (newMatch.state === 'live') {
         // match is live
-        const stream = streamMapperFn(newMatch.teamA, newMatch.teamB);
-        if (stream) {
-          newMatch.stream = new URL(stream);
+        if (streamMapperFn !== undefined) {
+          const stream = streamMapperFn(newMatch.teamA, newMatch.teamB);
+          if (stream) {
+            newMatch.stream = new URL(stream);
+          }
         }
       }
 
