@@ -142,7 +142,7 @@ async function processMatches(matches: ValEsportsEvent[], type: MatchState): Pro
         if (stream.provider === 'twitch') {
           match.stream = new URL(`https://twitch.tv/${stream.parameter}`);
         } else if (stream.provider === 'youtube') {
-          match.stream = new URL(`https://youtube.com/${stream.parameter}`);
+          match.stream = new URL(`https://youtube.com/watch?v=${stream.parameter}`);
         } else if (stream.provider === 'afreecatv') {
           match.stream = new URL(`https://afreecatv.com/${stream.parameter}`);
         }
