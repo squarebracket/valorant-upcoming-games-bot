@@ -16,9 +16,12 @@ export function doRequest(url: URL, parseJson?: boolean): Promise<any> {
       const contentType = res.headers['content-type'];
 
       let error: Error | undefined;
-      // Any 2xx status code signals a successful response but
-      // here we're only checking for 200.
-      if (statusCode !== 200) {
+      if (statusCode && (statusCode > 300 && statusCode < 400)) {
+        const newUrl = new URL(url.origin + res.headers['location']);
+        resolve(doRequest(newUrl, parseJson));
+      } else if (statusCode !== 200) {
+        // Any 2xx status code signals a successful response but
+        // here we're only checking for 200.
         error = new Error('Request Failed.\n' +
           `Status Code: ${statusCode}`);
       } else if (contentType && !/^application\/json/.test(contentType) && parseJson !== false) {
