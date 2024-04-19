@@ -114,6 +114,7 @@ const renderUpcomingMatches = (league: League, matches: Match[], unseen: number,
 function findGoodTimeFrame(matches: Match[]) {
   const now = new Date();
   const stops = [168, 72, 48, 36, 24];
+  const lastStop = stops[stops.length - 1];
   for (let i = 0; i < stops.length; i++) {
     const hours = stops[i];
     const asdf = new Date(now.valueOf());
@@ -130,10 +131,10 @@ function findGoodTimeFrame(matches: Match[]) {
   }
   console.log(`unable to find time window small enough for ${UPCOMING_TIMEFRAME_TARGET}`);
   const asdf = new Date(now.valueOf());
-  asdf.setHours(now.getHours() + 24);
+  asdf.setHours(now.getHours() + lastStop);
   return {
     matches: matches.filter((match) => match.startTime < asdf),
-    hours: 24,
+    hours: lastStop,
   };
 }
 
