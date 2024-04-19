@@ -168,6 +168,9 @@ export async function getBattlefy(
         newMatch.teamA = {
           name: match.top.team.name,
           code: tricodeMapper[match.top.team.name] ?? match.top.team.name,
+          result: {
+            mapWins: match.top.score ?? 0,
+          }
         };
       }
 
@@ -175,6 +178,9 @@ export async function getBattlefy(
         newMatch.teamB = {
           name: match.bottom.team.name,
           code: tricodeMapper[match.bottom.team.name] ?? match.bottom.team.name,
+          result: {
+            mapWins: match.bottom.score ?? 0,
+          }
         };
       }
 
