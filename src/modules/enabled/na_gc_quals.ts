@@ -81,5 +81,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return await getBattlefy('6609a38e86dc730b9efd91d7', league, tricodeMapper, streamMapperFn, 'gc-quals');
+  return await getBattlefy('662436e173911d2090ddeac1', league, tricodeMapper, streamMapperFn, 'gc-quals');
 }
