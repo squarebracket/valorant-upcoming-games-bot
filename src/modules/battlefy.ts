@@ -104,12 +104,12 @@ const builtinTimeMappers: BattlefyStartTimeMapper = {
 type BuiltinTimeMappers = 'gc-quals';
 
 // TODO: better types?
-const startTimeMapper = (stage: BattlefyStage, match: BattlefyMatch, startTimeMapper: string[], roundOffset: number) => {
+const startTimeMapper = (stage: BattlefyStage, match: BattlefyMatch, startTimeMapper: string[]) => {
   const startDate = new Date(stage.startTime);
   const a = new Date(startTimeMapper[0]);
   // @ts-ignore
   const diff = startDate - a;
-  let roundNum = match.roundNumber + roundOffset;
+  let roundNum = match.roundNumber;
   if (stage.bracket.style === 'double' && match.matchType === 'loser') {
     roundNum++;
   }
@@ -139,23 +139,36 @@ export async function getBattlefy(
     let matchesTemp: BattlefyMatch[] = [];
     if (stage.bracket.type === 'roundrobin') {
       stage.groups.forEach(group => {
-        matchesTemp = matchesTemp.concat(group.matches);
+        group.matches.forEach((match) => {
+          maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
+          match.roundNumber = roundOffset + maxRoundNumThisStage;
+          matchesTemp.push(match);
+        })
+        roundOffset = roundOffset + maxRoundNumThisStage;
+        maxRoundNumThisStage = 0;
       })
     } else {
       matchesTemp = stage.matches;
     }
-    roundOffset = roundOffset + maxRoundNumThisStage;
     matchesTemp.forEach((match) => {
-      maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
       if (match.isBye || match.isComplete) {
         return;
+      }
+      if (league.name === 'Game Changers NA') {
+        // hacks for na gc quals
+        if (stage.bracket.style === 'double' && match.roundNumber > 2) {
+          return;
+        }
+        if (stage.bracket.style === 'single') {
+          match.roundNumber = match.roundNumber + 3;
+        }
       }
       let startTime = new Date(stage.startTime);
       if (battlefyStartTimeMapper) {
         if (typeof battlefyStartTimeMapper === 'string') {
           battlefyStartTimeMapper = builtinTimeMappers[battlefyStartTimeMapper];
         }
-        startTime = startTimeMapper(stage, match, battlefyStartTimeMapper, roundOffset);
+        startTime = startTimeMapper(stage, match, battlefyStartTimeMapper);
       }
       const newMatch: Match = {
         league: league,
