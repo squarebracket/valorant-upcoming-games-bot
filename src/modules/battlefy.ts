@@ -177,6 +177,9 @@ export async function getBattlefy(
       };
 
       if (match.top.team) {
+        if (/BYE [A-Z]/.test(match.top.team.name)) {
+          return;
+        }
         newMatch.teamA = {
           name: match.top.team.name,
           code: tricodeMapper[match.top.team.name] ?? match.top.team.name,
@@ -187,6 +190,9 @@ export async function getBattlefy(
       }
 
       if (match.bottom.team) {
+        if (/BYE [A-Z]/.test(match.bottom.team.name)) {
+          return;
+        }
         newMatch.teamB = {
           name: match.bottom.team.name,
           code: tricodeMapper[match.bottom.team.name] ?? match.bottom.team.name,
