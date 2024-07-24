@@ -72,6 +72,15 @@ export async function getLeagues(): Promise<League[]> {
         }
       })
 
+    _leagues.push({
+      id: 'a',
+      name: 'Game Changers OCE',
+      region: 'OCEANIA',
+      slug: 'game-changers-oce',
+      tournaments: [],
+      emoji: client.emojis.cache.find(e => e.name === 'game_changers'),
+    });
+
     return _leagues;
   }
 }
