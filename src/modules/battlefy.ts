@@ -141,12 +141,12 @@ export async function getBattlefy(
       stage.groups.forEach(group => {
         group.matches.forEach((match) => {
           maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
-          match.roundNumber = roundOffset + maxRoundNumThisStage;
+          match.roundNumber = roundOffset + match.roundNumber;
           matchesTemp.push(match);
         })
-        roundOffset = roundOffset + maxRoundNumThisStage;
-        maxRoundNumThisStage = 0;
       })
+      roundOffset = roundOffset + maxRoundNumThisStage;
+      maxRoundNumThisStage = 0;
     } else {
       matchesTemp = stage.matches;
     }
