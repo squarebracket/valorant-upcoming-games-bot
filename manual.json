@@ -1,19 +1,48 @@
 [
   {
-    "league": "Game Changers NA",
+    "league": "Game Changers OCE",
     "teamA": {
-      "name": "TBD",
-      "code": "TBD"
+      "name": "Penguin Party",
+      "code": "PIP"
     },
     "teamB": {
-      "name": "TBD",
-      "code": "TBD"
+      "name": "VIXENS",
+      "code": "VIX"
     },
-    "startTime": "2024-04-23T17:00:00-0400",
-    "endTime": "2024-04-23T18:30:00-0400",
+    "startTime": "2024-07-06T15:00:00+1000",
+    "endTime": "2024-07-06T17:30:00+1000",
     "strategy": {
       "type": "bestOf",
       "count": 3
-    }
+    },
+    "stream": "https://www.twitch.tv/SumSoc"
+  },
+  {
+    "league": "Game Changers OCE",
+    "teamA": {
+      "name": "DXA Esports",
+      "code": "DXA"
+    },
+    "startTime": "2024-07-06T17:30:00+1000",
+    "endTime": "2024-07-06T20:00:00+1000",
+    "strategy": {
+      "type": "bestOf",
+      "count": 3
+    },
+    "stream": "https://www.twitch.tv/SumSoc"
+  },
+  {
+    "league": "Game Changers OCE",
+    "teamA": {
+      "name": "swaglord9000",
+      "code": "SL9"
+    },
+    "startTime": "2024-07-07T15:00:00+1000",
+    "endTime": "2024-07-07T20:00:00+1000",
+    "strategy": {
+      "type": "bestOf",
+      "count": 5
+    },
+    "stream": "https://www.twitch.tv/SumSoc"
   }
 ]
