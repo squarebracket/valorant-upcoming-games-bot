@@ -137,5 +137,8 @@ export async function getGamersClub(
   const liveUrl = new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/matches/paginated?status=ONGOING&page=1&limit=50`);
   const upcoming = await getGamersClubBracketMatches(tournament, league, tricodeMapper, streamMapperFn);
   const live = await getGamersClubImpl(liveUrl, league, true, tricodeMapper, streamMapperFn);
-  return live.concat(upcoming);
+  const mapVetoUrl = new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/matches/paginated?status=MAP_VETO&page=1&limit=50`);
+  const mapVeto = await getGamersClubImpl(mapVetoUrl, league, true, tricodeMapper, streamMapperFn);
+  const matches = live.concat(mapVeto).concat(upcoming);
+  return matches;
 }
