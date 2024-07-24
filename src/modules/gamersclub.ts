@@ -140,5 +140,22 @@ export async function getGamersClub(
   const mapVetoUrl = new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/matches/paginated?status=MAP_VETO&page=1&limit=50`);
   const mapVeto = await getGamersClubImpl(mapVetoUrl, league, true, tricodeMapper, streamMapperFn);
   const matches = live.concat(mapVeto).concat(upcoming);
+  if (!matches.length) {
+    const tourneyInfo = (await doRequest(new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/about`)));
+    const startTime = new Date(tourneyInfo.data.tournament.startDate);
+    if (startTime > new Date()) {
+      const count = tourneyInfo.data.tournament.metadata.defaultMatchData.matchFormat.match(/BO(\d)/)[1];
+      const placeholder: Match = {
+        league: league,
+        startTime: startTime,
+        state: 'upcoming',
+        strategy: {
+          type: 'bestOf',
+          count: parseInt(count),
+        },
+      };
+      matches.push(placeholder);
+    }
+  }
   return matches;
 }
