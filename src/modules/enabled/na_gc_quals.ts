@@ -4,24 +4,38 @@ import { Team } from "../../lib/matches.ts";
 import { getBattlefy } from "../battlefy.ts";
 
 const streamMapper = {
-  'RyZ Eclipsa GC': 'https://twitch.tv/omgangle',
+  'Catnappers': 'https://twitch.tv/omgangle',
   'Psycho Cats': 'https://twitch.tv/bloomana',
   'ASTANE GC': 'https://twitch.tv/thebubblybunni',
-  'Loafing Cats': 'https://twitch.tv/nexesfps',
-  'Catnappers': 'https://twitch.tv/oviaplays',
   'STARFIRE': 'https://twitch.tv/punkkup',
   'SaD GC': 'https://twitch.tv/risorah',
   'Skyline Dreamers GC': 'https://twitch.tv/banjuwu',
   'Alliance Angels': 'https://twitch.tv/jayccentric',
-  '42C CRAYOLA PACK': 'https://twitch.tv/zevcept',
-  'Cafe Coke': 'https://twitch.tv/ehzoue',
+  'vR GC': 'https://twitch.tv/ehzoue',
   '626': 'https://twitch.tv/rperk',
   'C4C Flare': 'https://twitch.tv/awpi',
   'LAB White': 'https://twitch.tv/shayellow',
   'VO Blossoms': 'https://twitch.tv/mekyizishere',
-  'Bumble Bees': 'https://twitch.tv/notaurelia_',
+  'Bumble Bees': 'https://twitch.tv/clocracy',
   'Harmony Opal': 'https://twitch.tv/phoxic_na',
   'Kryptic': 'https://twitch.tv/fallacyvl',
+  'DeToX GC': 'https://twitch.tv/mimiyaps',
+  'Mystics GC': 'https://twitch.tv/yungzephy',
+  'LUNA Artemis GC': 'https://twitch.tv/mekyizishere',
+  'minions united': 'https://twitch.tv/bittyybtw',
+  'Water gun warriors': 'https://twitch.tv/ogpaparoni',
+  'EbonyX GC': 'https://twitch.tv/anexcks',
+  'Dreamstation GC': 'https://twitch.tv/gemmasal',
+  'Event Horizon GC': 'https://twitch.tv/zevcept',
+  'Paradox': 'https://twitch.tv/rperk',
+  'Teddy Tactics': 'https://twitch.tv/endercasts',
+  'BAG': 'https://twitch.tv/alrightdani',
+  'Hearts and Kisses Esports': 'https://twitch.tv/alexiafoxxx',
+  'Mizzou Esports GC': 'https://twitch.tv/tippomy',
+  'TENAX GC': 'https://twitch.tv/adrsh12_',
+  'Scenario Cats': 'https://twitch.tv/freelilly',
+  'National Yappers Association': 'https://twitch.tv/psyncc',
+  'RITUAL RËAL': 'https://twitch.tv/mochimeival',
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
@@ -72,8 +86,11 @@ const tricodeMapper: TricodeMapper = {
   'Berzerkers Night': 'BZK',
   'mesos millionaires': 'MESO',
   "misu's qts": 'QTS',
-  'U4RIA Azalea': 'U4R',
+  'U4RIA Magnolia': 'U4R',
   'TBD': 'TBD',
+  'Water gun warriors': 'WGW',
+  'National Yappers Association': 'YAP',
+  'RITUAL RËAL': 'RTL',
 };
 
 export async function getMatches() {
@@ -81,5 +98,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return await getBattlefy('662436e173911d2090ddeac1', league, tricodeMapper, streamMapperFn, 'gc-quals');
+  return await getBattlefy('66845827fd0a1a052acad57d', league, tricodeMapper, streamMapperFn, 'gc-quals');
 }
