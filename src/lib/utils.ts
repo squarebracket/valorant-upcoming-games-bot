@@ -32,6 +32,7 @@ export function doRequest(url: URL, parseJson?: boolean): Promise<any> {
         console.error(error.message);
         // Consume response data to free up memory
         res.resume();
+        reject(error);
         return;
       }
       res.setEncoding('utf8');
