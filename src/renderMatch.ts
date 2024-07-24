@@ -69,6 +69,7 @@ function renderMatches2(
     const leagues = Object.keys(matchesByLeague);
     leagues.forEach((leagueName) => {
       let { league, matches } = matchesByLeague[leagueName];
+      matches.sort((a, b) => (a.startTime < b.startTime ? -1 : 1));
       const emoji = league.emoji ? `${league.emoji}` : '';
       let unseen = 0;
       if (!renderAll && matches.length > MAX_MATCHES_PER_LEAGUE) {
@@ -101,7 +102,7 @@ const renderUpcomingMatches = (league: League, matches: Match[], unseen: number,
   let message = '';
   const emoji = league.emoji ? `${league.emoji}` : '';
   message += `${emoji}__${league.name}__\n`;
-  matches.sort((a, b) => a.startTime < b.startTime ? -1 : 1).forEach((match) => {
+  matches.forEach((match) => {
     message += `${renderUpcomingMatch(match)}\n`;
   });
   if (unseen) {
