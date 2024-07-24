@@ -33,6 +33,7 @@ const EMEAGCTricodeMapper = {
   'VALIANT GC': 'VLNT',
   'MAD Lions KOI': 'MDK',
   'GIANTX GC': 'GIAN',
+  'HEROIC Valkyries': 'HERO',
 };
 
 export async function getMatches() {
@@ -44,7 +45,7 @@ export async function getMatches() {
   return (await
     getMatchesFromScraped(
       league,
-      'emea-gc.json',
+      2040,
       EMEAGCTricodeMapper,
       () => 'https://twitch.tv/dive_gg'
     )
