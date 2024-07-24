@@ -100,6 +100,10 @@ export async function getMatchesFromScraped(
       }
     }
 
+    if (state === 'live' && !newMatch.teamA && !newMatch.teamB) {
+      return;
+    }
+
     matches.push(newMatch);
   });
 
