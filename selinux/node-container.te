@@ -1,0 +1,13 @@
+
+module node-container 1.0;
+
+require {
+	type httpd_t;
+	type httpd_sys_rw_content_t;
+	class sock_file { create unlink };
+	class io_uring sqpoll;
+}
+
+#============= httpd_t ==============
+allow httpd_t httpd_sys_rw_content_t:sock_file { create unlink };
+allow httpd_t self:io_uring sqpoll;
