@@ -93,9 +93,17 @@ export async function getChallonge(
     if (standings[match.player2_id] === undefined) {
       standings[match.player2_id] = {w: 0, l: 0};
     }
+
     if (match.state === 'complete') {
-      standings[match.winner_id!].w = standings[match.winner_id!].w + 1;
-      standings[match.loser_id!].l = standings[match.loser_id!].l + 1;
+      // sometimes, when both teams FF, the match will be set to complete but
+      // there will be no winner/loser...
+      if (match.winner_id !== null && match.loser_id !== null) {
+        standings[match.winner_id].w = standings[match.winner_id].w + 1;
+        standings[match.loser_id].l = standings[match.loser_id].l + 1;
+      } else {
+        standings[match.player1_id].l = standings[match.player1_id].l + 1;
+        standings[match.player2_id].l = standings[match.player2_id].l + 1;
+      }
       return;
     }
 
