@@ -50,7 +50,7 @@ type ChallongeTournament = {
 export type StartTimeMapper = (match: ChallongeMatch, tourney: ChallongeTournament) => Date;
 
 export async function getChallonge(
-  tournament: number,
+  tournament: number | string,
   league: League,
   tricodeMapper: TricodeMapper,
   startTimeMapper: StartTimeMapper,
