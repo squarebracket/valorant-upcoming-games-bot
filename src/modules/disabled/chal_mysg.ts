@@ -26,7 +26,8 @@ const streamMapper = {
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
-  return streamMapperLookupFunction(streamMapper, teamA, teamB);
+  return 'https://www.twitch.tv/tgc_en';
+  // return streamMapperLookupFunction(streamMapper, teamA, teamB);
 }
 
 export async function getMatches(): Promise<Match[]> {
@@ -37,7 +38,7 @@ export async function getMatches(): Promise<Match[]> {
       throw new Error("can't find league");
       return [];
     }
-    return (await getMatchesFromScraped(league, 1956, tricodeMapper, streamMapperFn));
+    return (await getMatchesFromScraped(league, 2056, tricodeMapper, streamMapperFn));
     // return (await getMatchesFromScraped(league, 'chal-mysg.json', tricodeMapper, streamMapperFn));
   } catch {
     return [];
