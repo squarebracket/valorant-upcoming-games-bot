@@ -34,6 +34,7 @@ const EMEAGCTricodeMapper = {
   'MAD Lions KOI': 'MDK',
   'GIANTX GC': 'GIAN',
   'HEROIC Valkyries': 'HERO',
+  'ALTERNATE aTTaX Ruby': 'ATN',
 };
 
 export async function getMatches() {
@@ -45,7 +46,7 @@ export async function getMatches() {
   return (await
     getMatchesFromScraped(
       league,
-      2040,
+      2181,
       EMEAGCTricodeMapper,
       () => 'https://twitch.tv/dive_gg'
     )
