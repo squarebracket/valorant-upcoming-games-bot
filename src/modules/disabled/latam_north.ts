@@ -1,4 +1,5 @@
-import { getArenaGG } from "../arenagg.ts";
+//import { getArenaGG } from "../arenagg.ts";
+import { getMatchesFromScraped } from "../vlr_scraper.ts";
 import { getLeagueByName } from "../../lib/leagues.ts";
 import { Match } from "../../lib/matches.ts";
 import { StreamMapper, TricodeMapper, streamMapperLookupFunction } from "../../lib/utils.ts";
@@ -17,5 +18,6 @@ export async function getMatches(): Promise<Match[]> {
     throw new Error('unable to find latam gc league');
     return [];
   }
-  return (await getArenaGG(164766, league, tricodeMapper, (a, b) => streamMapperLookupFunction(streamMapper, a, b)));
+  return (await getMatchesFromScraped(league, 2128, tricodeMapper, (a, b) => 'https://www.twitch.tv/syncfireesports'));
+  //return (await getArenaGG(164766, league, tricodeMapper, (a, b) => streamMapperLookupFunction(streamMapper, a, b)));
 }

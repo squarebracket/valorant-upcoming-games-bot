@@ -48,15 +48,18 @@ const startTimeMapper: StartTimeMapper = (m, tourney) => {
   const tourneyStart = new Date(tourney.tournament.start_at);
   const round = match.round;
   if (round === 2) {
-    tourneyStart.setDate(tourneyStart.getDate() + 1);    
+    // tourneyStart.setDate(tourneyStart.getDate() + 1);
+    // tourneyStart.setHours(tourneyStart.getHours() + 3);
   } else if (round === 3) {
-    tourneyStart.setDate(tourneyStart.getDate() + 2);
+    // tourneyStart.setDate(tourneyStart.getDate() + 1);
   } else if (round === 4) {
-    tourneyStart.setDate(tourneyStart.getDate() + 3);
+    tourneyStart.setDate(tourneyStart.getDate() + 6);
+    // tourneyStart.setHours(tourneyStart.getHours() + 3);
   } else if (round === 5) {
-    tourneyStart.setDate(tourneyStart.getDate() + 4);
+    tourneyStart.setDate(tourneyStart.getDate() + 2);
   } else if (round === 6) {
-    tourneyStart.setDate(tourneyStart.getDate() + 5);
+    tourneyStart.setDate(tourneyStart.getDate() + 2);
+    tourneyStart.setHours(tourneyStart.getHours() + 3);
   }
   return tourneyStart;
 }
