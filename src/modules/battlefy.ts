@@ -137,7 +137,7 @@ export async function getBattlefy(
     }
     // stage.matches.filter((match) => !match.isComplete && !match.isBye).forEach((match) => {
     let matchesTemp: BattlefyMatch[] = [];
-    if (stage.bracket.type === 'roundrobin') {
+    if (stage.bracket.type === 'roundrobin' && stage.groups !== undefined) {
       stage.groups.forEach(group => {
         group.matches.forEach((match) => {
           maxRoundNumThisStage = Math.max(maxRoundNumThisStage, match.roundNumber);
