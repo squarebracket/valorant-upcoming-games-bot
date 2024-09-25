@@ -93,7 +93,7 @@ function parseGamersClubMatch(
   }
   const matchFormat = match.matchFormat || matchFormatMapper[match.id];
   if (matchFormat) {
-    const count = matchFormat.match(/BO(\d)/)[1];
+    const count = matchFormat.match(/BO(\d)/)![1];
     newMatch.strategy = {
       type: 'bestOf',
       count: parseInt(count),
