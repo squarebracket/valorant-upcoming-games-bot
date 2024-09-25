@@ -73,12 +73,21 @@ export async function getLeagues(): Promise<League[]> {
       })
 
     _leagues.push({
-      id: 'a',
+      id: 'game-changers-oce',
       name: 'Game Changers OCE',
       region: 'OCEANIA',
       slug: 'game-changers-oce',
       tournaments: [],
       emoji: client.emojis.cache.find(e => e.name === 'game_changers'),
+    });
+
+    _leagues.push({
+      id: 'game-changers-china',
+      name: 'Game Changers China',
+      region: 'CHINA',
+      slug: 'game-changers-china',
+      tournaments: [],
+      emoji: client.emojis.cache.find(e => e.name === 'game_changers_china'),
     });
 
     return _leagues;
