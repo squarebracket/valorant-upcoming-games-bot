@@ -2,7 +2,7 @@ import { parse } from 'node-html-parser';
 import { doRequest } from '../../lib/utils.ts';
 
 export async function getMatches() {
-  const html = await doRequest(new URL('https://vctgcemea.com/tournament/detail/vct-game-changers-emea:-stage-1-group-stage'), false);
+  const html = await doRequest(new URL('https://vctgcemea.com/tournament/detail/vct-game-changers-emea:-stage-1-group-stage'), {parseJson: false});
   const root = parse(html);
   const matches = root.querySelectorAll('#matches div.card-body div.card-body div.row.mb-3');
   // console.log(matches);

@@ -22,7 +22,7 @@ export async function getMatches(tourneyId: string) {
     let html: string;
 
     try {
-      html = await doRequest(url, false);
+      html = await doRequest(url, {parseJson: false});
     } catch (e) {
       console.log('error making request');
       break;

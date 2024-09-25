@@ -1,4 +1,4 @@
-import { get } from 'node:https';
+import { get, RequestOptions as BaseRequestOptions } from 'node:https';
 
 import { Match, Team, sortMatchesByLeague } from './matches.ts';
 import { League } from './leagues.ts';
@@ -9,16 +9,59 @@ const headers = {
   'accept': '*/*',
 };
 
-export function doRequest(url: URL, parseJson?: boolean): Promise<any> {
+export type CacheOptions = {
+  key: string,
+  time: number,
+};
+
+type RequestOptions = BaseRequestOptions & {
+  cache?: CacheOptions,
+  parseJson?: boolean,
+};
+
+type Cache = {
+  [key: string]: {
+    expireTime: Date,
+    data: object | string,
+  }
+};
+
+const cache: Cache = {};
+
+export function doRequest(url: URL, options?: RequestOptions): Promise<any> {
+  const parseJson = options?.parseJson;
+  const cacheOptions = options?.cache;
+  let requestOptions: BaseRequestOptions = { headers };
+  if (options) {
+    requestOptions = { ...options };
+    requestOptions.headers = { ...options?.headers, ...headers };
+  }
+
   return new Promise((resolve, reject) => {
-    const req = get(url, { headers }, (res) => {
+    if (cacheOptions) {
+      const key = cacheOptions.key;
+      console.log(`cache, key: ${cacheOptions.key}, time: ${cacheOptions.time}`);
+      if (cache[cacheOptions.key]) {
+        console.log(`have cache for ${cacheOptions.key} which expires at ${cache[cacheOptions.key].expireTime}`)
+        if (new Date() < cache[cacheOptions.key].expireTime) {
+          console.log(`current time is ${new Date()} so return cache data`);
+          resolve(cache[cacheOptions.key].data);
+          return;
+        }
+        console.log(`cache is stale, so do request`);
+        delete cache[cacheOptions.key];
+      } else {
+        console.log(`no data in cache, so do request`);
+      }
+    }
+    const req = get(url, requestOptions, (res) => {
       const { statusCode } = res;
       const contentType = res.headers['content-type'];
 
       let error: Error | undefined;
       if (statusCode && (statusCode > 300 && statusCode < 400)) {
         const newUrl = new URL(url.origin + res.headers['location']);
-        resolve(doRequest(newUrl, parseJson));
+        resolve(doRequest(newUrl, options));
       } else if (statusCode !== 200) {
         // Any 2xx status code signals a successful response but
         // here we're only checking for 200.
@@ -42,11 +85,24 @@ export function doRequest(url: URL, parseJson?: boolean): Promise<any> {
         try {
           if (parseJson !== false) {
             const parsedData = JSON.parse(rawData);
+            if (cacheOptions) {
+              const expire = new Date();
+              expire.setSeconds(expire.getSeconds() + cacheOptions.time);
+              cache[cacheOptions.key] = { data: parsedData, expireTime: expire };
+            }
             resolve(parsedData);
           } else {
+            if (cacheOptions) {
+              const expire = new Date();
+              expire.setSeconds(expire.getSeconds() + cacheOptions.time);
+              cache[cacheOptions.key] = { data: rawData, expireTime: expire };
+            }
             resolve(rawData);
           }
         } catch (e) {
+          if (cacheOptions) {
+            delete cache[cacheOptions.key];
+          }
           if (e instanceof Error) {
             console.error(e.message);
             reject(e.message);

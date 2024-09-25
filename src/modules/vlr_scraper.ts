@@ -18,7 +18,7 @@ type ScrapedMatch = {
 async function scraper(tourneyId: number) {
   const scraped: ScrapedMatch[] = [];
   const url = new URL(`https://www.vlr.gg/event/matches/${tourneyId}`);
-  const html = await doRequest(url, false);
+  const html = await doRequest(url, {parseJson: false});
   const root = parse(html);
   const links = root.querySelectorAll('a[class*="wf-module-item match-item"]');
   links.forEach(matchEl => {

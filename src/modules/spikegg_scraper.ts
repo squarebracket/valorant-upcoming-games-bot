@@ -18,7 +18,7 @@ type ScrapedMatch = {
 async function scraper(tourneyId: number) {
   const scraped: ScrapedMatch[] = [];
   const url = new URL(`https://www.thespike.gg/events/matches/a/${tourneyId}`);
-  const html = await doRequest(url, false);
+  const html = await doRequest(url, {parseJson: false});
   const root = parse(html);
   const divs = root.querySelectorAll('div[class^="event_match__"]');
   divs.forEach(matchEl => {
