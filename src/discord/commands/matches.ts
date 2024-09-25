@@ -66,8 +66,21 @@ export const execute = async function (interaction: ChatInputCommandInteraction)
 export const autocomplete = async function(interaction: AutocompleteInteraction) {
   const focusedValue = interaction.options.getFocused();
   const leagues = (await getLeagues()).sort(sortLeaguesFn).map(league => league.name);
-  const filtered = leagues.filter(choice => new RegExp(`${focusedValue}`, 'i').test(choice));
-  const choices = filtered.map(choice => ({name: choice, value: choice}));
-  choices.unshift({name: 'All', value: '.*'});
-  await interaction.respond(choices.slice(0, 24));
+  const filteredExact = leagues.filter(choice => new RegExp(`^${focusedValue}$`, 'i').test(choice));
+  if (filteredExact.length === 1) {
+    const choices = filteredExact.map(choice => ({name: choice, value: `^${choice}$`}));
+    await interaction.respond(choices);
+  } else {
+    const filtered = leagues.filter(choice => new RegExp(`${focusedValue}`, 'i').test(choice));
+    // need to anchor the value for a manually selected league, this is basically only
+    // relevant when selecting Champions since it also matches Game Changers Championship
+    const choices = filtered.map(choice => ({name: choice, value: `^${choice}$`}));
+    // the first result should be what we enter, or 'All' if nothing was entered
+    if (focusedValue !== '') {
+      choices.unshift({name: focusedValue, value: focusedValue});
+    } else {
+      choices.unshift({name: 'All', value: '.*'});
+    }
+    await interaction.respond(choices.slice(0, 24));
+  }
 }
