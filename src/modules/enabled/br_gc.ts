@@ -26,7 +26,7 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  const qual1 = await getGamersClub(3108, league, tricodeMapper, streamMapperFn);
-  const qual2 = await getGamersClub(3109, league, tricodeMapper, streamMapperFn);
+  const qual1 = await getGamersClub(3126, league, tricodeMapper, streamMapperFn);
+  const qual2 = await getGamersClub(3127, league, tricodeMapper, streamMapperFn);
   return qual1.concat(qual2);
 }
