@@ -107,7 +107,7 @@ export async function getFilterFuncForObjectIdOrDefault(objectId: string): Promi
 }
 
 export function sortLeaguesFn(one: League, two: League): number {
-  if (/vct|champions|masters/i.test(one.name)) {
+  if (/vct|^champions$|masters/i.test(one.name)) {
     return -1;
   } else if (/challengers/i.test(one.name) && /game changers/i.test(two.name)) {
     return -1;
