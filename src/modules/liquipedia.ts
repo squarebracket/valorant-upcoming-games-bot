@@ -71,7 +71,10 @@ export async function getLiquipedia(
       startTime: startTime,
     };
 
-    if (match.match2opponents[0] && match.match2opponents[0].name !== '') {
+    // sometimes there will be team info data in liquipedia that is not an actual
+    // team, but is information for the tournament format (something like "highest seed").
+    // checking if there's a teamtemplate should guard against all conditions here.
+    if (match.match2opponents[0] && match.match2opponents[0].name !== '' && match.match2opponents[0].teamtemplate) {
       newMatch.teamA = {
         name: match.match2opponents[0].name,
         code: match.match2opponents[0].teamtemplate.shortname,
@@ -81,7 +84,7 @@ export async function getLiquipedia(
       }
     }
 
-    if (match.match2opponents[1] && match.match2opponents[1].name !== '') {
+    if (match.match2opponents[1] && match.match2opponents[1].name !== '' && match.match2opponents[1].teamtemplate) {
       newMatch.teamB = {
         name: match.match2opponents[1].name,
         code: match.match2opponents[1].teamtemplate.shortname,
