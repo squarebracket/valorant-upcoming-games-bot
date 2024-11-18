@@ -50,7 +50,7 @@ export async function getLiquipedia(
   const headers = {
     authorization: `Apikey ${apiKey}`
   };
-  const url = new URL(`https://api.liquipedia.net/api/v3/match?wiki=valorant&limit=20&conditions=[[tournament::${tournament}]]&streamurls=true&rawstreams=true&order=date%20ASC`);
+  const url = new URL(`https://api.liquipedia.net/api/v3/match?wiki=valorant&limit=20&conditions=[[tournament::${encodeURIComponent(tournament)}]]&streamurls=true&rawstreams=true&order=date%20ASC`);
   const cacheOptions: CacheOptions = {
     key: tournament,
     time: 180,
