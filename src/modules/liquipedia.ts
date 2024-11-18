@@ -41,7 +41,7 @@ type LiquipediaMatch = {
 
 
 export async function getLiquipedia(
-  tournament: string,
+  tournament: string | string[], // array means collect several tournaments together
   league: League,
   tricodeMapper?: TricodeMapper,
   streamMapperFn?: StreamMapperFunction,
@@ -50,9 +50,11 @@ export async function getLiquipedia(
   const headers = {
     authorization: `Apikey ${apiKey}`
   };
-  const url = new URL(`https://api.liquipedia.net/api/v3/match?wiki=valorant&limit=20&conditions=[[tournament::${encodeURIComponent(tournament)}]]&streamurls=true&rawstreams=true&order=date%20ASC`);
+  const tournaments = Array.isArray(tournament) ? tournament : [tournament];
+  const conditions = tournaments.map(t => `[[tournament::${encodeURIComponent(t)}]]`).join(`%20OR%20`);
+  const url = new URL(`https://api.liquipedia.net/api/v3/match?wiki=valorant&limit=20&conditions=${conditions}&streamurls=true&rawstreams=true&order=date%20ASC`);
   const cacheOptions: CacheOptions = {
-    key: tournament,
+    key: conditions,
     time: 180,
   }
   const matches: LiquipediaMatch[] = (await doRequest(url, { headers, cache: cacheOptions })).result;
