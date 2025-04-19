@@ -8,7 +8,7 @@ const UPCOMING_TIMEFRAME_TARGET = 15;
 type RenderFunction = (league: League, match: Match[], unseen: number, tierBreak: boolean) => string;
 
 export function renderLiveMatch(match: Match): string {
-  const stream = match.stream ? `<${match.stream}>` : '[Unknown]';
+  const stream = match.stream ? `<${match.stream}>` : '';
   if (!match.teamA && !match.teamB) {
     return `No team info was returned ¯\\_(ツ)_/¯ but it's live @ ${stream}`;
   }
@@ -28,7 +28,10 @@ export function renderLiveMatch(match: Match): string {
   } else if (match.strategy) {
     message += ` (BO${match.strategy.count})`;
   }
-  return `${message} @ ${stream}`;
+  if (stream) {
+    message += ` @ ${stream}`;
+  }
+  return message;
 }
 
 export function renderUpcomingMatch(match: Match): string {
@@ -175,6 +178,5 @@ export async function renderMatches(matches: Match[], filterFn: LeagueFilterFunc
   }
 
   console.log(`${matches.length} total matches, ${leagueFiltered.length} after league filter, ${timeWindowFiltered.length} after time filter.`);
-
   return liveMessage + upcomingMessage;
 }
