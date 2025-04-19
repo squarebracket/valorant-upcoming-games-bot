@@ -6,6 +6,7 @@ import { GuildEmoji } from "discord.js";
 type Tournament = {
   season: {
     name: string;
+    startTime: string;
   }
 }
 
@@ -48,7 +49,7 @@ export async function getLeagues(): Promise<League[]> {
 
     _leagues = (await doRequest(new URL('https://esports-api.service.valorantesports.com/persisted/val/getLeaguesForStandings?hl=en-US&sport=val')))
       .data.leagues
-      .filter((league: League) => !league.name.includes('Last Chance Qualifier') && !league.name.includes('LOCK//IN') && !league.name.includes('Regional League CIS'))
+      .filter((league: League) => !league.name.includes('Last Chance Qualifier') && !league.name.includes('LOCK//IN') && !league.name.includes('Regional League CIS') && !league.name.includes('Challengers East'))
       // .filter((league: League) => parseInt(league.tournaments[0].season.name) >= new Date().getFullYear())
       .map((league: League) => {
         let emoji: GuildEmoji | string | undefined = client.emojis.cache.find(e => e.name === league.slug);
