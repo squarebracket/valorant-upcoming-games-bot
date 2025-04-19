@@ -13,6 +13,11 @@ const streamMapper = {
   // 'DMX': 'https://www.twitch.tv/naoshiitv',
   // 'LOUD': 'https://www.twitch.tv/naoshiitv',
   // 'TLV': 'https://www.twitch.tv/anaz1k',
+  'EMPR': 'https://www.twitch.tv/naperx_',
+  'INT': 'https://www.twitch.tv/jedaizera',
+  '777': 'https://www.twitch.tv/wildchun',
+  
+
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
@@ -26,7 +31,7 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  const qual1 = await getGamersClub(3126, league, tricodeMapper, streamMapperFn);
-  const qual2 = await getGamersClub(3127, league, tricodeMapper, streamMapperFn);
-  return qual1.concat(qual2);
+  const qual1 = await getGamersClub(3160, league, tricodeMapper, streamMapperFn);
+  // const qual2 = await getGamersClub(3146, league, tricodeMapper, streamMapperFn);
+  return qual1;
 }
