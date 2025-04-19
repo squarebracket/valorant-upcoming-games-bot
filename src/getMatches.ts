@@ -28,7 +28,7 @@ export async function getMatches(filter: string | null | undefined, objectId: st
 
   console.log(`getMatches took ${new Date().valueOf() - start.valueOf()}ms`);
   if (message.trim() === '') {
-    return `I've got nothing for you :shruge:`;
+    return `I've got nothing for you <:Shruge:1324454812938407956>`;
   } else {
     return message.trim();
   }
