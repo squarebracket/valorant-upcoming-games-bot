@@ -98,10 +98,20 @@ const builtinTimeMappers: BattlefyStartTimeMapper = {
     '2024-03-26T00:00:00.000Z',
     '2024-03-26T21:00:00.000Z',
     '2024-03-27T00:00:00.000Z',
+  ],
+  'gc-main': [
+    '2025-02-11T22:00:00.000Z',
+    '2025-02-12T00:00:00.000Z',
+    '2025-02-12T22:00:00.000Z',
+    '2025-02-13T00:00:00.000Z',
+    '2025-02-13T22:00:00.000Z',
+    '2025-02-14T00:00:00.000Z',
+    '2025-02-14T22:00:00.000Z',
+    '2025-02-15T22:00:00.000Z',
   ]
 };
 
-type BuiltinTimeMappers = 'gc-quals';
+type BuiltinTimeMappers = 'gc-quals' | 'gc-main';
 
 // TODO: better types?
 const startTimeMapper = (stage: BattlefyStage, match: BattlefyMatch, startTimeMapper: string[]) => {
