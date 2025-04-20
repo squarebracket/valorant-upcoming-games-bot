@@ -61,9 +61,41 @@ export async function getLiquipedia(
   }
   const matches: LiquipediaMatch[] = (await doRequest(url, { headers, cache: cacheOptions })).result;
   const newMatches: Match[] = [];
+  const standings: {[key: string]: {wins: number, losses: number}} = {};
 
   matches.forEach((match) => {
-    if (match.finished) {
+    if (match.match2opponents[0] && match.match2opponents[0].name !== '' && match.match2opponents[0].teamtemplate &&
+      !standings[match.match2opponents[0].name]
+    ) {
+      standings[match.match2opponents[0].name] = {
+        wins: 0,
+        losses: 0,
+      };
+    }
+
+    if (match.match2opponents[1] && match.match2opponents[1].name !== '' && match.match2opponents[1].teamtemplate &&
+      !standings[match.match2opponents[1].name]
+    ) {
+      standings[match.match2opponents[1].name] = {
+        wins: 0,
+        losses: 0,
+      };
+    }
+
+    if (match.finished || match.extradata.timestamp < 1) {
+      console.log('match finished');
+      if (match.match2opponents[0] && match.match2opponents[0].name !== '' && match.match2opponents[0].teamtemplate &&
+          match.match2opponents[1] && match.match2opponents[1].name !== '' && match.match2opponents[1].teamtemplate) {
+        const teamA = match.match2opponents[0].name;
+        const teamB = match.match2opponents[1].name;
+        if (match.winner === '1') {
+          standings[teamA].wins++;
+          standings[teamB].losses++;
+        } else {
+          standings[teamB].wins++;
+          standings[teamA].losses++;
+        }
+      }
       return;
     }
     const startTime = new Date(match.extradata.timestamp * 1000);
@@ -83,6 +115,10 @@ export async function getLiquipedia(
         code: match.match2opponents[0].teamtemplate.shortname,
         result: {
           mapWins: match.match2opponents[0].score === -1 ? 0 : match.match2opponents[0].score,
+        },
+        record: {
+          wins: standings[match.match2opponents[0].name]?.wins,
+          losses: standings[match.match2opponents[0].name]?.losses,
         }
       }
     }
@@ -93,6 +129,10 @@ export async function getLiquipedia(
         code: match.match2opponents[1].teamtemplate.shortname,
         result: {
           mapWins: match.match2opponents[1].score === -1 ? 0 : match.match2opponents[1].score,
+        },
+        record: {
+          wins: standings[match.match2opponents[1].name]?.wins,
+          losses: standings[match.match2opponents[1].name]?.losses,
         }
       }
     }
