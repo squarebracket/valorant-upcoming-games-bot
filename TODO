@@ -1,0 +1,12 @@
+[ ] testing
+    [ ] add tests for parsing / fetching modules
+    [ ] add tests for certain core functions
+        [ ] find good time frame
+    [ ] test for challonge start time mapper
+[ ] team matches
+    [ ] generic-ify filter function
+    [ ] /team_matches function
+[ ] document modules
+[ ] finish readme
+[ ] command for recent results
+[ ] have league max matches filter process before time window filter
