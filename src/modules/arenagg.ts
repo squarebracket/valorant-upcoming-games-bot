@@ -1,3 +1,5 @@
+// WARNING!!! arenagg's api seems to no longer be functional.
+// trying to hit it returns a DNS origin error from cloudflare.
 import { League } from "../lib/leagues.ts";
 import { Match, MatchState } from "../lib/matches.ts";
 import { StreamMapperFunction, TricodeMapper, doRequest } from "../lib/utils.ts";
