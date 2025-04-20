@@ -45,6 +45,9 @@ async function getGamersClubBracketMatches(
   const matches: Match[] = [];
   const fn = (phase: GamersClubPhase) => {
     phase.matches.forEach(match => {
+      if (!match || !match.startDate) {
+        return;
+      }
       if (match.matchFormat) {
         matchFormatMapper[match.id] = match.matchFormat;
       }
