@@ -78,7 +78,7 @@ function parseGamersClubMatch(
   if (match.teamA) {
     newMatch.teamA = {
       name: match.teamA.name,
-      code: match.teamA.tag || tricodeMapper[match.teamA.name],
+      code: match.teamA.tag || tricodeMapper[match.teamA.name] || match.teamA.name,
     };
     newMatch.teamA.result = {
       mapWins: match.teamAScore,
@@ -88,7 +88,7 @@ function parseGamersClubMatch(
   if (match.teamB) {
     newMatch.teamB = {
       name: match.teamB.name,
-      code: match.teamB.tag || tricodeMapper[match.teamB.name],
+      code: match.teamB.tag || tricodeMapper[match.teamB.name] || match.teamB.name,
     };
     newMatch.teamB.result = {
       mapWins: match.teamBScore,
