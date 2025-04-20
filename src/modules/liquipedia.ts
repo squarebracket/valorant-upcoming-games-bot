@@ -97,6 +97,12 @@ export async function getLiquipedia(
       }
     }
 
+    if (match.match2opponents[0] && match.match2opponents[0].name && match.match2opponents[0].name.match(/seed/i) &&
+        match.match2opponents[1] && match.match2opponents[1].name && match.match2opponents[1].name.match(/seed/i)) {
+          console.log('seed return');
+      return;
+    }
+
     if (match.bestof) {
       newMatch.strategy = {
         type: "bestOf",
