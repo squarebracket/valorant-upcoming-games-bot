@@ -145,7 +145,7 @@ const startTimeMapper = (stage: BattlefyStage, match: BattlefyMatch, startTimeMa
 export async function getBattlefy(
   tournamentId: string,
   league: League,
-  tricodeMapper: TricodeMapper,
+  tricodeMapper: TricodeMapper = {},
   streamMapperFn?: StreamMapperFunction,
   battlefyStartTimeMapper?: BuiltinTimeMappers | string[]
 ): Promise<Match[]> {
