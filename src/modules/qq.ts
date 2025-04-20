@@ -1,6 +1,6 @@
 import { StreamMapperFunction, TricodeMapper, doRequest, CacheOptions } from "../lib/utils.ts";
 import { League } from "../lib/leagues.ts";
-import { Match } from "../lib/matches.ts";
+import { Match, MatchState } from "../lib/matches.ts";
 
 type QQTeam = {
   teamId: number,
@@ -47,10 +47,18 @@ export async function getQQ(
   // maybe i should just reverse()?
   data.sort(matchSortFn).forEach((match: QQMatch) => {
     const startTime = new Date(match.matchDate);
+    let state: MatchState;
+    if (match.matchStatusId === 1) {
+      state = 'upcoming';
+    } else if (match.matchStatusId === 3) {
+      state = 'completed';
+    } else {
+      state = 'live';
+    }
     const newMatch: Match = {
       league: league,
       startTime: startTime,
-      state: match.matchStatusId === 1 ? 'upcoming' : 'live',
+      state: state,
     };
 
     if (match.matchFormat) {
@@ -112,10 +120,6 @@ export async function getQQ(
           losses: standings[match.teamBId].l,
         }
       }
-    }
-
-    if (match.matchStatusId === 3) {
-      return;
     }
 
     if (streamMapperFn) {

@@ -1,5 +1,5 @@
 import { League } from "../lib/leagues.ts";
-import { Match } from "../lib/matches.ts";
+import { Match, MatchState } from "../lib/matches.ts";
 import { doRequest } from "../lib/utils.ts";
 import { bestOfTimeMapper } from "../lib/utils.ts";
 
@@ -70,11 +70,8 @@ export async function getLvlUpMatchesForTourney(tournament: string, league: Leag
           const finished = match.awayPoint === mapsRequired || match.homePoint === mapsRequired;
           matchFinishedMapper[match.id] = finished;
 
-          if (finished) {
-            return;
-          }
+          let state: MatchState = 'upcoming';
 
-          let state: 'live' | 'upcoming' = 'upcoming';
           // @ts-ignore
           if ((match.prev.right || match.prev.left) && (matchFinishedMapper[match.prev.right] === false || matchFinishedMapper[match.prev.left] === false)) {
             state = 'upcoming';
@@ -84,6 +81,10 @@ export async function getLvlUpMatchesForTourney(tournament: string, league: Leag
             } else {
               state = 'upcoming';
             }
+          }
+
+          if (finished) {
+            state = 'completed'
           }
 
           const newMatch: Match = {

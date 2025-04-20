@@ -1,5 +1,5 @@
 import { League } from "../lib/leagues.ts";
-import { BestOfStrategy, Match } from "../lib/matches.ts";
+import { BestOfStrategy, Match, MatchState } from "../lib/matches.ts";
 import { StreamMapperFunction, TricodeMapper, doRequest } from "../lib/utils.ts";
 import * as config from '../config.ts';
 
@@ -104,15 +104,15 @@ export async function getChallonge(
         standings[match.player1_id].l = standings[match.player1_id].l + 1;
         standings[match.player2_id].l = standings[match.player2_id].l + 1;
       }
-      return;
     }
 
     const startTime = match.scheduled_time ? new Date(match.scheduled_time) : startTimeMapper(m, data);
+    const state: MatchState = match.state === 'complete' ? 'completed' : (match.started_at && new Date() > startTime) ? 'live' : 'upcoming';
 
     const newMatch: Match = {
       league: league,
       startTime: startTime,
-      state: (match.started_at && new Date() > startTime) ? 'live' : 'upcoming',
+      state: state,
     };
 
     const mapScores = (match.scores_csv ?? '').split(',').reduce((prev, cur) => {

@@ -1,7 +1,7 @@
 import { League, sortLeaguesFn } from "./leagues.ts";
 
 type Result = {
-  outcome?: 'win' | 'loss' | 'null' | 'undefined';
+  outcome?: 'win' | 'loss' | null | undefined;
   mapWins: number;
 }
 
@@ -20,7 +20,7 @@ export type BestOfStrategy = {
   count: number;
 }
 
-export type MatchState = 'live' | 'upcoming';
+export type MatchState = 'live' | 'upcoming' | 'completed';
 
 export type Match = {
   startTime: Date;

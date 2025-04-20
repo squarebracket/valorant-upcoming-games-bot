@@ -1,5 +1,5 @@
 import { League } from "../lib/leagues.ts";
-import { Match } from "../lib/matches.ts";
+import { Match, MatchState } from "../lib/matches.ts";
 import { StreamMapperFunction, TricodeMapper, doRequest } from "../lib/utils.ts";
 
 type ArenaGGParticipant = {
@@ -56,20 +56,18 @@ export async function getArenaGG(
   })
 
   matches.forEach((match) => {
-    if (new Date() > new Date(match.startDate * 1000 + match.resultPublishTime*60*1000)) {
-      return;
-    }
     const startTime = new Date(match.startDate * 1000);
+    const matchState = match.status === 'playing' ? 'live' : (match.status === 'finished' ? 'completed' : 'upcoming');
     const newMatch: Match = {
       league: league,
       startTime: startTime,
-      state: match.status === 'playing' ? 'live' : 'upcoming',
+      state: matchState,
       strategy: {
         type: "bestOf",
         count: match.bestOf,
       },
     };
-    
+
     const teamA = match.profiles.shift();
     if (teamA) {
       newMatch.teamA = {
@@ -77,6 +75,7 @@ export async function getArenaGG(
         code: teamA.participant.tag ?? tricodeMapper[teamA.participant.name] ?? teamA.participant.name,
         result: {
           mapWins: match.result[teamA.id.toString()] ?? 0,
+          outcome: teamA.isWinner === true ? 'win' : (match.status === 'finished' ? 'loss' : undefined),
         },
         record: {
           wins: standings[teamA.participant.name].w,
@@ -84,7 +83,7 @@ export async function getArenaGG(
         },
       };
     }
-    
+
     const teamB = match.profiles.shift();
     if (teamB) {
       newMatch.teamB = {
@@ -92,6 +91,7 @@ export async function getArenaGG(
         code: teamB.participant.tag ?? tricodeMapper[teamB.participant.name] ?? teamB.participant.name,
         result: {
           mapWins: match.result[teamB.id.toString()] ?? 0,
+          outcome: teamB.isWinner === true ? 'win' : (match.status === 'finished' ? 'loss' : undefined),
         },
         record: {
           wins: standings[teamB.participant.name].w,
@@ -101,6 +101,6 @@ export async function getArenaGG(
     }
     retMatches.push(newMatch);
   });
-  
+
   return retMatches;
 }

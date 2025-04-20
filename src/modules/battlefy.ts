@@ -1,5 +1,5 @@
 import { League } from "../lib/leagues.ts";
-import { Match } from "../lib/matches.ts";
+import { Match, MatchState } from "../lib/matches.ts";
 import { StreamMapper, StreamMapperFunction, TricodeMapper, doRequest } from "../lib/utils.ts";
 
 type BattlefyTeam = {
@@ -210,7 +210,7 @@ export async function getBattlefy(
       matchesTemp = stage.matches;
     }
     matchesTemp.forEach((match) => {
-      if (match.isBye || match.isComplete) {
+      if (match.isBye) {
         return;
       }
       if (league.name === 'Game Changers NA') {
@@ -236,10 +236,12 @@ export async function getBattlefy(
         }
         startTime = startTimeMapper(stage, match, battlefyStartTimeMapper);
       }
+
+      const state: MatchState = match.isComplete ? 'completed' : (now > startTime ? 'live' : 'upcoming')
       const newMatch: Match = {
         league: league,
         startTime: startTime,
-        state: now > startTime ? 'live' : 'upcoming',
+        state: state,
       };
 
       if (match.top.team) {
@@ -277,7 +279,6 @@ export async function getBattlefy(
           }
         }
       }
-
       matches.push(newMatch);
     });
   });

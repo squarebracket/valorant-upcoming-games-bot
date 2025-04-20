@@ -1,5 +1,5 @@
 import { League } from "../lib/leagues.ts";
-import { BestOfStrategy, Match } from "../lib/matches.ts";
+import { BestOfStrategy, Match, MatchState } from "../lib/matches.ts";
 import { StreamMapperFunction, TricodeMapper, doRequest } from "../lib/utils.ts";
 
 type GamersClubTeam = {
@@ -51,10 +51,13 @@ async function getGamersClubBracketMatches(
       if (match.matchFormat) {
         matchFormatMapper[match.id] = match.matchFormat;
       }
+      let state: MatchState;
       if (match.finished || new Date() > new Date(match.startDate)) {
-        return;
+        state = 'completed';
+      } else {
+        state = 'upcoming'
       }
-      matches.push(parseGamersClubMatch(match, league, false, tricodeMapper, streamMapperFn));
+      matches.push(parseGamersClubMatch(match, league, state, tricodeMapper, streamMapperFn));
     });
   };
   brackets.lowerBracket.forEach(fn);
@@ -65,14 +68,14 @@ async function getGamersClubBracketMatches(
 function parseGamersClubMatch(
   match: GamersClubMatch,
   league: League,
-  live: boolean,
+  state: MatchState,
   tricodeMapper: TricodeMapper,
   streamMapperFn?: StreamMapperFunction
 ) {
   const newMatch: Match = {
     league: league,
     startTime: new Date(match.startDate),
-    state: live ? 'live' : 'upcoming',
+    state: state,
   };
 
   if (match.teamA) {
@@ -102,7 +105,7 @@ function parseGamersClubMatch(
       count: parseInt(count),
     };
   }
-  if (live && streamMapperFn !== undefined) {
+  if (state === 'live' && streamMapperFn !== undefined) {
     // match is live
     const stream = streamMapperFn(newMatch.teamA, newMatch.teamB);
     if (stream) {
@@ -116,14 +119,14 @@ function parseGamersClubMatch(
 async function getGamersClubImpl(
   url: URL,
   league: League,
-  live: boolean,
+  state: MatchState,
   tricodeMapper: TricodeMapper,
   streamMapperFn?: StreamMapperFunction
 ) {
   const retMatches: Match[] = [];
   const matches: GamersClubMatch[] = (await doRequest(url)).data.results;
   matches.forEach((match) => {
-    const newMatch = parseGamersClubMatch(match, league, live, tricodeMapper, streamMapperFn);
+    const newMatch = parseGamersClubMatch(match, league, state, tricodeMapper, streamMapperFn);
     retMatches.push(newMatch);
   });
   return retMatches;
@@ -139,9 +142,9 @@ export async function getGamersClub(
   //const upcoming = await getGamersClubImpl(upUrl, league, false, tricodeMapper, streamMapperFn);
   const liveUrl = new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/matches/paginated?status=ONGOING&page=1&limit=50`);
   const upcoming = await getGamersClubBracketMatches(tournament, league, tricodeMapper, streamMapperFn);
-  const live = await getGamersClubImpl(liveUrl, league, true, tricodeMapper, streamMapperFn);
+  const live = await getGamersClubImpl(liveUrl, league, 'live', tricodeMapper, streamMapperFn);
   const mapVetoUrl = new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/matches/paginated?status=MAP_VETO&page=1&limit=50`);
-  const mapVeto = await getGamersClubImpl(mapVetoUrl, league, true, tricodeMapper, streamMapperFn);
+  const mapVeto = await getGamersClubImpl(mapVetoUrl, league, 'live', tricodeMapper, streamMapperFn);
   const matches = live.concat(mapVeto).concat(upcoming);
   if (!matches.length) {
     const tourneyInfo = (await doRequest(new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/about`)));
