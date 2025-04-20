@@ -147,16 +147,18 @@ export async function getGamersClub(
     const tourneyInfo = (await doRequest(new URL(`https://api.gamersclub.gg/v1/tournaments/${tournament}/about`)));
     const startTime = new Date(tourneyInfo.data.tournament.startDate);
     if (startTime > new Date()) {
-      const count = tourneyInfo.data.tournament.metadata.defaultMatchData.matchFormat.match(/BO(\d)/)[1];
       const placeholder: Match = {
         league: league,
         startTime: startTime,
         state: 'upcoming',
-        strategy: {
+      };
+      if (tourneyInfo.data.tournament.metadata.defaultMatchData.matchFormat) {
+        const count = tourneyInfo.data.tournament.metadata.defaultMatchData.matchFormat.match(/BO(\d)/)[1];
+        placeholder.strategy = {
           type: 'bestOf',
           count: parseInt(count),
-        },
-      };
+        };
+      }
       matches.push(placeholder);
     }
   }
