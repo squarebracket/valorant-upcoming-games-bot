@@ -21,6 +21,7 @@ const streamMapper = {
   //'Kryptic': 'https://twitch.tv/fallacyvl',
   //'DeToX GC': 'https://twitch.tv/mimiyaps',
   //'Mystics GC': 'https://twitch.tv/yungzephy',
+  'HyperSpeed White': 'https://www.twitch.tv/jiajayna',
   //'LUNA Artemis GC': 'https://twitch.tv/mekyizishere',
   'minions united': 'https://twitch.tv/bittyybtw',
   'ENVEE Sapphire': 'https://twitch.tv/ogpaparoni',
@@ -28,11 +29,11 @@ const streamMapper = {
   //'Dreamstation GC': 'https://twitch.tv/gemmasal',
   'Event Horizon GC': 'https://twitch.tv/zevcept',
   //'Paradox': 'https://twitch.tv/rperk',
-  'Teddy Tactics': 'https://twitch.tv/endercasts',
+  // 'Teddy Tactics': 'https://twitch.tv/endercasts',
   //'BAG': 'https://twitch.tv/alrightdani',
   //'Hearts and Kisses Esports': 'https://twitch.tv/alexiafoxxx',
   //'Mizzou Esports GC': 'https://twitch.tv/tippomy',
-  'TENAX GC': 'https://twitch.tv/adrsh12_',
+  // 'Tenax GC': 'https://twitch.tv/adrsh12_',
   //'Scenario Cats': 'https://twitch.tv/freelilly',
   //'National Yappers Association': 'https://twitch.tv/psyncc',
   'RITUAL RËAL': 'https://twitch.tv/mochimeival',
@@ -44,10 +45,14 @@ const streamMapper = {
   'SaD FROST': 'https://twitch.tv/stayvlr',
   'Purpose Gaming GC': 'https://twitch.tv/madsmoney666',
   'Tea Guzzlers': 'https://twitch.tv/sadliii_',
+  'Chronic': 'https://twitch.tv/angejlz',
+
 };
 
 const streamMapperFn = (teamA?: Team, teamB?: Team) => {
-  return streamMapperLookupFunction(streamMapper, teamA, teamB);
+  if (teamA && teamB && teamA.name === 'OVERKILL') {
+    return 'https://twitch.tv/raidiantgg';
+  }
 }
 
 const tricodeMapper: TricodeMapper = {
@@ -100,6 +105,7 @@ const tricodeMapper: TricodeMapper = {
   'Water gun warriors': 'WGW',
   'National Yappers Association': 'YAP',
   'RITUAL RËAL': 'RTL',
+  'Tenax GC': 'TNX',
 };
 
 export async function getMatches() {
@@ -107,5 +113,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return await getBattlefy('66d25026ab07330021b152c0', league, tricodeMapper, streamMapperFn, 'gc-quals');
+  return await getBattlefy('67e844233c70d700211eacc0', league, tricodeMapper, streamMapperFn, 'gc-quals');
 }
