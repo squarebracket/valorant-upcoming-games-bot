@@ -24,6 +24,7 @@ type ArenaGGMatch = {
   startDate: number;
   status: 'finished' | 'canceled' | 'resolved' | 'scheduled' | 'playing';
   resultPublishTime: number;
+  result: { [key: string]: number };
 }
 
 // TODO: calculate standings?
@@ -58,6 +59,9 @@ export async function getArenaGG(
       newMatch.teamA = {
         name: teamA.participant.name,
         code: teamA.participant.tag ?? tricodeMapper[teamA.participant.name] ?? teamA.participant.name,
+        result: {
+          mapWins: match.result[teamA.id.toString()] ?? 0,
+        },
       };
     }
     
@@ -66,6 +70,9 @@ export async function getArenaGG(
       newMatch.teamB = {
         name: teamB.participant.name,
         code: teamB.participant.tag ?? tricodeMapper[teamB.participant.name] ?? teamB.participant.name,
+        result: {
+          mapWins: match.result[teamB.id.toString()] ?? 0,
+        },
       };
     }
     retMatches.push(newMatch);
