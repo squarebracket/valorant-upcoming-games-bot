@@ -47,20 +47,7 @@ const startTimeMapper: StartTimeMapper = (m, tourney) => {
   const match = m.match;
   const tourneyStart = new Date(tourney.tournament.start_at);
   const round = match.round;
-  if (round === 2) {
-    // tourneyStart.setDate(tourneyStart.getDate() + 1);
-    // tourneyStart.setHours(tourneyStart.getHours() + 3);
-  } else if (round === 3) {
-    // tourneyStart.setDate(tourneyStart.getDate() + 1);
-  } else if (round === 4) {
-    tourneyStart.setDate(tourneyStart.getDate() + 6);
-    // tourneyStart.setHours(tourneyStart.getHours() + 3);
-  } else if (round === 5) {
-    tourneyStart.setDate(tourneyStart.getDate() + 2);
-  } else if (round === 6) {
-    tourneyStart.setDate(tourneyStart.getDate() + 2);
-    tourneyStart.setHours(tourneyStart.getHours() + 3);
-  }
+  tourneyStart.setDate(tourneyStart.getDate() + (round - 1));
   return tourneyStart;
 }
 
@@ -69,5 +56,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return (await getChallonge('GCSEAStage2Playoffs', league, tricodeMapper, startTimeMapper, ((teamA?: Team, teamB?: Team) => `https://twitch.tv/fsl`)));
+  return (await getChallonge('GCSEA25Split1Swiss', league, tricodeMapper, startTimeMapper));
 }
