@@ -218,9 +218,16 @@ export async function getBattlefy(
         if (stage.bracket.style === 'double' && match.roundNumber > 2) {
           return;
         }
+        if (stage.bracket.style === 'double' && !/group/i.test(stage.name)) {
+          match.roundNumber = match.roundNumber + 3;
+          if (match.matchType === 'loser') {
+            match.roundNumber = match.roundNumber + 1;
+          }
+        }
         if (stage.bracket.style === 'single') {
           match.roundNumber = match.roundNumber + 3;
         }
+
       }
       let startTime = new Date(stage.startTime);
       if (battlefyStartTimeMapper) {
