@@ -39,10 +39,12 @@ type LiquipediaMatch = {
   bestof: number,
 }
 
+type LeagueMapper = (tourney: string) => League;
+
 
 export async function getLiquipedia(
   tournament: string | string[], // array means collect several tournaments together
-  league: League,
+  leagueMapper: LeagueMapper,
   tricodeMapper?: TricodeMapper,
   streamMapperFn?: StreamMapperFunction,
 ): Promise<Match[]> {
@@ -65,6 +67,7 @@ export async function getLiquipedia(
       return;
     }
     const startTime = new Date(match.extradata.timestamp * 1000);
+    const league = leagueMapper(match.tournament);
     const newMatch: Match = {
       league: league,
       state: startTime > new Date() ? 'upcoming' : 'live',
