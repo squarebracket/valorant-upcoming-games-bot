@@ -1,0 +1,1221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`battlefy parser tests minimal args 1`] = `
+[
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "YDZ Black",
+      "name": "YDZ Black",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Skyline Dreamers",
+      "name": "Skyline Dreamers",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Shopify Rebellion",
+      "name": "Shopify Rebellion",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "YDZ Black",
+      "name": "YDZ Black",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "YDZ Black",
+      "name": "YDZ Black",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Skyline Dreamers",
+      "name": "Skyline Dreamers",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Ominous Minions",
+      "name": "Ominous Minions",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "AURA Eclipse",
+      "name": "AURA Eclipse",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "oomfies",
+      "name": "oomfies",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Ominous Minions",
+      "name": "Ominous Minions",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Ominous Minions",
+      "name": "Ominous Minions",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "AURA Eclipse",
+      "name": "AURA Eclipse",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "RITUAL RËAL",
+      "name": "RITUAL RËAL",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Passionless Project",
+      "name": "Passionless Project",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "mesos millionaires",
+      "name": "mesos millionaires",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "RITUAL RËAL",
+      "name": "RITUAL RËAL",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "RITUAL RËAL",
+      "name": "RITUAL RËAL",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Passionless Project",
+      "name": "Passionless Project",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "HyperSpeed Red",
+      "name": "HyperSpeed Red",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Elite Dynasty GC",
+      "name": "Elite Dynasty GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Teddy Tactics",
+      "name": "Teddy Tactics",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "HyperSpeed Red",
+      "name": "HyperSpeed Red",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "HyperSpeed Red",
+      "name": "HyperSpeed Red",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Elite Dynasty GC",
+      "name": "Elite Dynasty GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Erinite GC",
+      "name": "Erinite GC",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+    "teamB": {
+      "code": "meowtastic",
+      "name": "meowtastic",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "TENAX GC",
+      "name": "TENAX GC",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "meowtastic",
+      "name": "meowtastic",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "meowtastic",
+      "name": "meowtastic",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Erinite GC",
+      "name": "Erinite GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "SaD FROST",
+      "name": "SaD FROST",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "BBB",
+      "name": "BBB",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Day By Day",
+      "name": "Day By Day",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Nori X",
+      "name": "Nori X",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "SaD FROST",
+      "name": "SaD FROST",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Day By Day",
+      "name": "Day By Day",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Nori X",
+      "name": "Nori X",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "BBB",
+      "name": "BBB",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Day By Day",
+      "name": "Day By Day",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Nori X",
+      "name": "Nori X",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Elation Vortex",
+      "name": "Elation Vortex",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Students of the Game",
+      "name": "Students of the Game",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Catnappers",
+      "name": "Catnappers",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Ukiyo GC",
+      "name": "Ukiyo GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Elation Vortex",
+      "name": "Elation Vortex",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Catnappers",
+      "name": "Catnappers",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Ukiyo GC",
+      "name": "Ukiyo GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+    "teamB": {
+      "code": "Students of the Game",
+      "name": "Students of the Game",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Catnappers",
+      "name": "Catnappers",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+    "teamB": {
+      "code": "Students of the Game",
+      "name": "Students of the Game",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Refrag",
+      "name": "Refrag",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "SHU GC",
+      "name": "SHU GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Give Wingman Her Last Nuclear Device",
+      "name": "Give Wingman Her Last Nuclear Device",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Purpose Gaming Sirens",
+      "name": "Purpose Gaming Sirens",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Refrag",
+      "name": "Refrag",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Give Wingman Her Last Nuclear Device",
+      "name": "Give Wingman Her Last Nuclear Device",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Purpose Gaming Sirens",
+      "name": "Purpose Gaming Sirens",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+    "teamB": {
+      "code": "SHU GC",
+      "name": "SHU GC",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Give Wingman Her Last Nuclear Device",
+      "name": "Give Wingman Her Last Nuclear Device",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "SHU GC",
+      "name": "SHU GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Shopify Rebellion",
+      "name": "Shopify Rebellion",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Ominous Minions",
+      "name": "Ominous Minions",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "TENAX GC",
+      "name": "TENAX GC",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+    "teamB": {
+      "code": "HyperSpeed Red",
+      "name": "HyperSpeed Red",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Refrag",
+      "name": "Refrag",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Students of the Game",
+      "name": "Students of the Game",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "mesos millionaires",
+      "name": "mesos millionaires",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+    "teamB": {
+      "code": "Give Wingman Her Last Nuclear Device",
+      "name": "Give Wingman Her Last Nuclear Device",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "oomfies",
+      "name": "oomfies",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "YDZ Black",
+      "name": "YDZ Black",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Elation Vortex",
+      "name": "Elation Vortex",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "meowtastic",
+      "name": "meowtastic",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "SaD FROST",
+      "name": "SaD FROST",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "RITUAL RËAL",
+      "name": "RITUAL RËAL",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Teddy Tactics",
+      "name": "Teddy Tactics",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Day By Day",
+      "name": "Day By Day",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Shopify Rebellion",
+      "name": "Shopify Rebellion",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "HyperSpeed Red",
+      "name": "HyperSpeed Red",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Refrag",
+      "name": "Refrag",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Give Wingman Her Last Nuclear Device",
+      "name": "Give Wingman Her Last Nuclear Device",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "oomfies",
+      "name": "oomfies",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Elation Vortex",
+      "name": "Elation Vortex",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "SaD FROST",
+      "name": "SaD FROST",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+    "teamB": {
+      "code": "Teddy Tactics",
+      "name": "Teddy Tactics",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "Shopify Rebellion",
+      "name": "Shopify Rebellion",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Refrag",
+      "name": "Refrag",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "completed",
+    "teamA": {
+      "code": "oomfies",
+      "name": "oomfies",
+      "result": {
+        "mapWins": 2,
+      },
+    },
+    "teamB": {
+      "code": "Teddy Tactics",
+      "name": "Teddy Tactics",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+  {
+    "league": {
+      "emoji": Emote {
+        "name": "game_changers_na",
+      },
+      "id": "106976737954740691",
+      "name": "Game Changers NA",
+      "region": "NORTH AMERICA",
+      "slug": "game_changers_na",
+    },
+    "startTime": 2024-10-01T21:00:00.000Z,
+    "state": "live",
+    "teamA": {
+      "code": "Shopify Rebellion",
+      "name": "Shopify Rebellion",
+      "result": {
+        "mapWins": 1,
+      },
+    },
+    "teamB": {
+      "code": "oomfies",
+      "name": "oomfies",
+      "result": {
+        "mapWins": 0,
+      },
+    },
+  },
+]
+`;
