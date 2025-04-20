@@ -32,7 +32,7 @@ type ArenaGGMatch = {
 export async function getArenaGG(
   tournament: number,
   league: League,
-  tricodeMapper: TricodeMapper,
+  tricodeMapper: TricodeMapper = {},
   streamMapper: StreamMapperFunction
 ): Promise<Match[]> {
   const retMatches: Match[] = [];
