@@ -82,7 +82,7 @@ export async function getLiquipedia(
         name: match.match2opponents[0].name,
         code: match.match2opponents[0].teamtemplate.shortname,
         result: {
-          mapWins: match.match2opponents[0].score,
+          mapWins: match.match2opponents[0].score === -1 ? 0 : match.match2opponents[0].score,
         }
       }
     }
@@ -92,7 +92,7 @@ export async function getLiquipedia(
         name: match.match2opponents[1].name,
         code: match.match2opponents[1].teamtemplate.shortname,
         result: {
-          mapWins: match.match2opponents[1].score,
+          mapWins: match.match2opponents[1].score === -1 ? 0 : match.match2opponents[1].score,
         }
       }
     }
