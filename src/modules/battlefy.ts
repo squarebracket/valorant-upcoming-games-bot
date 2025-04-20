@@ -86,6 +86,20 @@ type BattlefyStage = {
   groups?: BattlefyGroup[];
 }
 
+type BattlefyCustomField = {
+  name: string;
+  public: boolean;
+  _id: string;
+}
+
+type BattlefyTournament = {
+  startTime: string;
+  customFields: BattlefyCustomField[];
+  name: string;
+  requireScreenshotForScoreReporting: boolean;
+  stages: BattlefyStage[];
+}
+
 type BattlefyStartTimeMapper = { [key: string]: string[] };
 
 const builtinTimeMappers: BattlefyStartTimeMapper = {
@@ -140,7 +154,42 @@ export async function getBattlefy(
   const url = new URL(`https://dtmwra1jsgyb0.cloudfront.net/tournaments/${tournamentId}?extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Btop.team%5D=true&extend%5Bstages%5D%5Bmatches%5D%5Bbottom.team%5D=true&extend%5Bstages%5D%5Bgroups%5D%5Bstandings%5D%5Bteam%5D=true&extend%5Bstages%5D%5Bstandings%5D%5Bteam%5D=true`);
   let maxRoundNumThisStage = 0;
   let roundOffset = 0;
-  const data = (await doRequest(url))[0];
+  const data: BattlefyTournament = (await doRequest(url))[0];
+
+  if (league.name === 'Game Changers NA') {
+    const playoffs = data.stages.filter(stage => /playoffs/i.test(stage.name));
+    if (data.stages.length === 0) {
+      // make a fake match placeholder for the tourney
+      let startTime = new Date(data.startTime);
+      const newMatch: Match = {
+        league: league,
+        startTime: startTime,
+        state: "upcoming",
+      }
+      matches.push(newMatch);
+    } else if (playoffs.length === 0) {
+      // make a fake match placeholer for playoffs
+      let startTime = new Date(data.stages[0].startTime);
+      if (battlefyStartTimeMapper) {
+        if (typeof battlefyStartTimeMapper === 'string') {
+          battlefyStartTimeMapper = builtinTimeMappers[battlefyStartTimeMapper];
+        }
+        const a = new Date(battlefyStartTimeMapper[0]);
+        // @ts-ignore
+        const diff = startTime - a;
+        const b = new Date(battlefyStartTimeMapper[3]);
+        b.setMilliseconds(b.getMilliseconds() + diff);
+
+        const newMatch: Match = {
+          league: league,
+          startTime: b,
+          state: "upcoming",
+        }
+        matches.push(newMatch);
+      }
+    }
+  }
+
   data.stages.forEach((stage: BattlefyStage) => {
     if (!stage.matches) {
       return;
