@@ -56,7 +56,7 @@ export async function getMatches(): Promise<Match[]> {
       throw new Error("can't find league");
       return [];
     }
-    return (await getMatchesFromToornament(league, '7918703729112940544', tricodeMapper, streamMapperFn));
+    return (await getMatchesFromToornament(league, '8730775566302658560', tricodeMapper, streamMapperFn));
   } catch {
     return [];
   }
