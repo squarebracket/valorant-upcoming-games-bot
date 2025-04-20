@@ -9,7 +9,7 @@ type RenderFunction = (league: League, match: Match[], unseen: number, tierBreak
 
 export function renderLiveMatch(match: Match): string {
   const stream = match.stream ? `<${match.stream}>` : '';
-  if (!match.teamA && !match.teamB) {
+  if (!match.teamA && !match.teamB && stream) {
     return `No team info was returned ¯\\_(ツ)_/¯ but it's live @ ${stream}`;
   }
   let leftSide = (match.teamA ? match.teamA.code : 'TBD').replace('_', '\\_');
