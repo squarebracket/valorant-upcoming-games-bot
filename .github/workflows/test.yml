@@ -1,0 +1,31 @@
+name: run test
+
+on:
+  push: 
+  schedule:
+    - cron: "16 12 * * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install modules
+        run: npm install
+      - name: make config.ts
+        run: |
+          echo "export const token = '$TOKEN';" >> src/config.ts
+          echo "export const clientId = '$CLIENT_ID';" >> src/config.ts
+          echo "export const guildId = '$GUILD_ID';" >> src/config.ts
+          echo "export const challongeUsername = '$CHALLONGE_USERNAME';" >> src/config.ts
+          echo "export const challongeApiKey = '$CHALLONGE_API_KEY';" >> src/config.ts
+          echo "export const liquipediaApiKey = '$LIQUIPEDIA_API_KEY';" >> src/config.ts
+        env:
+          TOKEN: ${{secrets.TOKEN}}
+          CLIENT_ID: ${{secrets.CLIENT_ID}}
+          GUILD_ID: ${{secrets.GUILD_ID}}
+          CHALLONGE_USERNAME: ${{secrets.CHALLONGE_USERNAME}}
+          CHALLONGE_API_KEY: ${{secrets.CHALLONGE_API_KEY}}
+          LIQUIPEDIA_API_KEY: ${{secrets.LIQUIPEDIA_API_KEY}}
+      - name: run tests
+        run: npm test
