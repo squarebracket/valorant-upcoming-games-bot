@@ -17,5 +17,5 @@ export async function getMatches() {
     throw new Error('no league');
   }
   // return await getLiquipedia('VCT 2024: Game Changers China', league, tricodeMapper, streamMapperFn);
-  return await getQQ(1000022, league, () => `https://www.twitch.tv/valorantesports_cn`);
+  return await getQQ(1000037, league, () => `https://www.twitch.tv/valorantesports_cn`);
 }
