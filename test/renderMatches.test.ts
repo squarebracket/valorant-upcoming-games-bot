@@ -34,6 +34,10 @@ jest.mock('../src/lib/utils.ts', () => {
 
 describe("live match line rendering", () => {
 
+  beforeAll(() => {
+    jest.useFakeTimers().setSystemTime(new Date('2025-04-20'));
+  })
+
   test("no teams", async () => {
     const match: Match = {
       startTime: new Date('2025-05-01T00:00:00Z'),
