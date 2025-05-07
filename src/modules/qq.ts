@@ -48,7 +48,7 @@ export async function getQQ(
   data.sort(matchSortFn).forEach((match: QQMatch) => {
     const startTime = new Date(match.matchDate);
     let state: MatchState;
-    if (match.matchStatusId === 1) {
+    if (match.matchStatusId === 1 && startTime > new Date()) {
       state = 'upcoming';
     } else if (match.matchStatusId === 3) {
       state = 'completed';
@@ -67,6 +67,10 @@ export async function getQQ(
         type: 'bestOf',
         count: bo,
       };
+      const numNeeded = Math.ceil(bo / 2);
+      if (match.scoreA === numNeeded || match.scoreB === numNeeded) {
+        newMatch.state = 'completed';
+      }
 
       if (standings[match.teamAId] === undefined) {
         standings[match.teamAId] = { w: 0, l: 0 };
