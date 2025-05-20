@@ -56,5 +56,5 @@ export async function getMatches() {
   if (!league) {
     throw new Error('no league');
   }
-  return (await getChallonge('GCSEA25Split1Swiss', league, tricodeMapper, startTimeMapper));
+  return (await getChallonge('GCSEA25Split2Swiss', league, tricodeMapper, startTimeMapper));
 }
