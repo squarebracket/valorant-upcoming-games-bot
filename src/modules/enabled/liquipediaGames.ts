@@ -17,6 +17,8 @@ export async function getMatches(): Promise<Match[]> {
     const gcKr = await getLeagueByName('Game Changers KR');
     const gcJp = await getLeagueByName('Game Changers JPN');
     const gcCn = await getLeagueByName('Game Changers China');
+    const gcSA = await getLeagueByName('Game Changers South Asia');
+    const vclNA = await getLeagueByName('Challengers NA');
     if (gcJp === undefined) {
       console.error(`can't find league`);
       throw new Error("can't find league");
@@ -45,13 +47,20 @@ export async function getMatches(): Promise<Match[]> {
       console.error(`can't find league`);
       throw new Error("can't find league");
     }
+    if (gcSA === undefined) {
+      console.error(`can't find league`);
+      throw new Error("can't find league");
+    }
     const tourneys = [
       'VCT 2025: Game Changers Korea Split 1',
-      'VCT 2025: Game Changers China Stage 1 - Group Stage',
+      'VCT 2025: Game Changers China Stage 1',
+      'VCT 2025: Game Changers EMEA Stage 2',
     ];
     const leagueMapper = (tournament: string): League => {
       if (tournament.includes('Korea')) {
         return gcKr;
+      } else if (tournament.includes('EMEA')) {
+        return gcEMEA;
       } else {
         return gcCn;
       }
